@@ -236,8 +236,8 @@ function DayCard({ day, open, onToggle }: { day: Day; open: boolean; onToggle: (
         </div>
         <div className="flex-1">
           <div className="text-xl sm:text-2xl font-extrabold tracking-tight">{day.dateLabel}</div>
-          <div className="mt-1 text-brand-phosphor font-bold">// {day.tagline}</div>
-          <div className="text-white/60 text-sm">/** {day.subTagline} */</div>
+          <div className="mt-1 text-brand-phosphor font-bold">{"//"} {day.tagline}</div>
+          <div className="text-white/60 text-sm">{"/*"}{"*"} {day.subTagline} {" */"}</div>
         </div>
         <span className="text-white/50 text-xl sm:text-2xl">{open ? "▴" : "▾"}</span>
       </button>
@@ -279,7 +279,7 @@ export default function Schedule() {
         <Reveal>
           <h2 className="text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
             <span className="text-white">Event Agenda</span>
-            <span className="block text-base sm:text-lg font-bold mt-1">// Tagline 54 hours of innovation</span>
+            <span className="block text-base sm:text-lg font-bold mt-1">Tagline 54 hours of innovation</span>
           </h2>
         </Reveal>
 

@@ -103,7 +103,7 @@ export default function Team() {
         <h2 className="text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
           Our Team
           <span className="block  text-base sm:text-lg font-bold mt-1">
-            // Tagline Organizers & Leads
+            Tagline Organizers & Leads
           </span>
         </h2>
 

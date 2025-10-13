@@ -97,7 +97,7 @@ export default function MentorsJudges() {
           <h2 className="text-center text-3xl sm:text-4xl font-extrabold tracking-tight">
             Mentors & Judges
             <span className="block  text-base sm:text-lg font-bold mt-1">
-              // Tagline Experts who’ll guide your 54-hour sprint
+              Tagline Experts who’ll guide your 54-hour sprint
             </span>
           </h2>
         </Reveal>
