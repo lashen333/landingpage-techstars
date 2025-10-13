@@ -1,26 +1,66 @@
+/* src\app\globals.css */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Brand tokens (Tailwind v4) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors (on-brand) */
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+  --color-brand-phosphor: #39c463; /* Techstars accent */
+  --color-brand-slate: #8298ab;    /* Techstars slate */
+
+  /* Optional semantic aliases for convenience */
+  --color-text-primary: var(--color-brand-white);
+  --color-text-secondary: color-mix(in oklab, var(--color-brand-white) 80%, transparent);
+
+  /* Shadows */
+  --shadow-glow: 0 0 60px color-mix(in oklab, var(--color-brand-phosphor) 35%, transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Accessible focus */
+:focus-visible { outline: 2px solid var(--color-brand-phosphor); outline-offset: 2px; }
+
+/* Page fade */
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+body { animation: fadeIn .5s ease both; }
+
+/* Subtle grid background (used in Hero) */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
+  background-position: -1px -1px, -1px -1px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* --- HERO helpers --- */
+
+/* soft vignette so edges fade gently on large screens */
+.hero-vignette {
+  mask-image: radial-gradient(120% 120% at 50% 35%, #000 60%, transparent 100%);
+}
+
+/* for nicer automatic line breaks on long headings */
+.h-balance { text-wrap: balance; }
+
+/* soft grid already exists in your file; bottom fade adds depth */
+.hero-bottom-fade {
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.95) 100%);
+  pointer-events: none;
+}
+
+/* bottom dark wash (with slight phosphor tint) */
+.section-bottom-wash {
+  background:
+    radial-gradient(120% 80% at 50% 120%,
+      rgba(57,196,99,0.18) 0%,
+      rgba(0,0,0,0.55) 38%,
+      rgba(0,0,0,0.92) 70%,
+      rgba(0,0,0,1) 100%);
+  pointer-events: none;
+}
+
+/* optional very soft vignette to soften top edge */
+.section-vignette {
+  mask-image: radial-gradient(140% 120% at 50% 0%, #000 55%, transparent 100%);
 }
