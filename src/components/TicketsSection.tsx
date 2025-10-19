@@ -1,7 +1,7 @@
-// src\components\TicketsSection.tsx
 "use client";
 
 import { motion } from "framer-motion";
+import type React from "react";
 
 type Ticket = {
   name: string;
@@ -83,6 +83,13 @@ function TicketCard({
     "radial-gradient(14px 14px at right 50%, transparent 98%, #000 100%) 100% 0 / 28px 100% no-repeat," +
     "linear-gradient(#000,#000)";
 
+  // Type-safe style object (no `any`)
+  const maskStyle: React.CSSProperties = {
+    // React supports these keys in CSSProperties
+    WebkitMask: ticketMask,
+    mask: ticketMask,
+  };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 16 }}
@@ -90,7 +97,7 @@ function TicketCard({
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ translateY: -4 }}
-      style={{ WebkitMask: ticketMask as any, mask: ticketMask as any }}
+      style={maskStyle}
       className="relative overflow-hidden rounded-2xl"
     >
       {/* Solid background (no grid visible) */}
@@ -117,13 +124,9 @@ function TicketCard({
         {/* Right stub (CTA) */}
         <div className="shrink-0 sm:w-60 p-6 sm:p-7 flex flex-col justify-between bg-[#0e0e0e]">
           <div>
-            <p className="text-xs uppercase tracking-wide text-white/60">
-              Registration
-            </p>
+            <p className="text-xs uppercase tracking-wide text-white/60">Registration</p>
             <p className="mt-1 text-sm text-white/80">
-              {ticket.expires
-                ? "Early access offer"
-                : "Available while seats last"}
+              {ticket.expires ? "Early access offer" : "Available while seats last"}
             </p>
           </div>
 

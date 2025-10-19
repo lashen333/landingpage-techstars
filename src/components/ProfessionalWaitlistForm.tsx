@@ -25,6 +25,13 @@ const FormSchema = z.object({
 
 type FormValues = z.infer<typeof FormSchema>;
 
+/** Shape returned by your Apps Script endpoint */
+type GScriptResponse = {
+  result?: "success" | "error";
+  error?: string;
+  deduped?: boolean;
+};
+
 export default function ProfessionalWaitlistForm() {
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
 
@@ -46,12 +53,14 @@ export default function ProfessionalWaitlistForm() {
 
     const parsed = FormSchema.safeParse(values);
     if (!parsed.success) {
-      return setStatus({ ok: false, msg: parsed.error.issues[0]?.message ?? "Invalid input" });
+      setStatus({ ok: false, msg: parsed.error.issues[0]?.message ?? "Invalid input" });
+      return;
     }
 
     // Honeypot (spam) check
     if (values.phone && values.phone.length > 0) {
-      return setStatus({ ok: false, msg: "Spam check failed." });
+      setStatus({ ok: false, msg: "Spam check failed." });
+      return;
     }
 
     try {
@@ -65,17 +74,28 @@ export default function ProfessionalWaitlistForm() {
       const res = await fetch(endpoint, { method: "POST", body });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      // Apps Script returns JSON: { result: "success" | "error", ... }
-      const json = await res.json().catch(() => ({} as any));
-
-      if (!json || json?.result === "success") {
-        setStatus({ ok: true, msg: json?.deduped ? "You were already on the list ✅" : "Thanks! You’re on the waitlist." });
-        reset();
-      } else {
-        throw new Error(json?.error || "Unknown error");
+      // Parse JSON safely without `any`
+      let json: GScriptResponse | null = null;
+      try {
+        json = (await res.json()) as GScriptResponse;
+      } catch {
+        json = null;
       }
-    } catch (err: any) {
-      setStatus({ ok: false, msg: err?.message || "Something went wrong. Please try again." });
+
+      if (json === null || json.result === "success") {
+        setStatus({
+          ok: true,
+          msg: json?.deduped ? "You were already on the list ✅" : "Thanks! You’re on the waitlist.",
+        });
+        reset();
+        return;
+      }
+
+      // If Apps Script reported an error explicitly
+      throw new Error(json.error || "Unknown error");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      setStatus({ ok: false, msg: message });
     }
   };
 
