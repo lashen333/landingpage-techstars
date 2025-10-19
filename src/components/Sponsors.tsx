@@ -1,3 +1,4 @@
+// src\components\Sponsors.tsx
 import Reveal from "./Reveal";
 
 export default function Sponsors() {

@@ -1,14 +1,13 @@
 // src\app\page.tsx
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Schedule from "@/components/Schedule";
-import Sponsors from "@/components/Sponsors";
-import FAQ from "@/components/FAQ";
-import WaitlistForm from "@/components/WaitlistForm";
+import WhoIsItFor from "@/components/WhoIsItFor";
+import WhatToExpect from "@/components/WhatToExpect";
+import EventSchedule from "@/components/EventSchedule";
+import TicketsSection from "@/components/TicketsSection";
+import ImpactStats from "@/components/ImpactStats";
+
 import Footer from "@/components/Footer";
-import Team from "@/components/Team";
-import MentorsJudges from "@/components/MentorsJudges";
 
 export default function Page() {
   return (
@@ -16,13 +15,13 @@ export default function Page() {
       <Header />
       <main>
         <Hero />
-        <About />
-        <Schedule />
-        <Team />
-        <MentorsJudges />
-        <Sponsors />
-        <FAQ />
-        <WaitlistForm />
+        <ImpactStats />
+        <WhoIsItFor />
+        <WhatToExpect />
+        <EventSchedule />
+        <TicketsSection />
+        
+       
       </main>
       <Footer />
     </>

@@ -1,3 +1,4 @@
+// src\components\FAQ.tsx
 import Reveal from "./Reveal";
 
 const faqs = [

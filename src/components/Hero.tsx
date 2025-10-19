@@ -2,58 +2,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import ProfessionalWaitlistForm from "./ProfessionalWaitlistForm";
 
 export default function Hero() {
-  // State to hold bubbles - initially empty
+  // Floating bubbles (ambient background)
   const [bubbles, setBubbles] = useState<Array<{
     id: number;
     size: number;
-    left: number;
-    top: number;
+    left: number; // vw
+    top: number;  // vh
     driftY: number;
     duration: number;
     delay: number;
     opacity: number;
   }>>([]);
 
-  // Generate bubbles ONLY on client side after component mounts
   useEffect(() => {
-    const generatedBubbles = Array.from({ length: 64 }).map((_, i) => {
-      const size = Math.random() * 5 + 2;    // 2–7px
-      const left = Math.random() * 100;      // vw
-      const top = Math.random() * 100;       // vh
-      const driftY = Math.random() * 70 + 40; // 40–110px vertical drift
-      const duration = Math.random() * 6 + 6; // 6–12s (faster)
-      const delay = Math.random() * 3;       // 0–3s
-      const opacity = Math.random() * 0.5 + 0.2; // 0.2–0.7
+    const generated = Array.from({ length: 48 }).map((_, i) => {
+      const size = Math.random() * 6 + 2;   // 2–8px
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const driftY = Math.random() * 80 + 40;  // 40–120px
+      const duration = Math.random() * 6 + 8;  // 8–14s
+      const delay = Math.random() * 4;         // 0–4s
+      const opacity = Math.random() * 0.45 + 0.15; // 0.15–0.6
       return { id: i, size, left, top, driftY, duration, delay, opacity };
     });
-    
-    setBubbles(generatedBubbles);
-  }, []); // Empty dependency array = runs once after mount
+    setBubbles(generated);
+  }, []);
 
   return (
     <section
-        className="relative isolate min-h-[480px] pt-24 pb-20 flex items-center justify-center text-center overflow-hidden"
+      className="
+        relative isolate overflow-hidden bg-brand-black
+        /* add a gentle top gap on mobile so content clears the header */
+        pt-24 md:pt-0
+      "
+      style={{ minHeight: "100svh" }}
     >
-      {/* 1) Subtle grid across hero */}
+      {/* Grid background */}
       <div className="absolute inset-0 bg-grid" aria-hidden />
 
-      {/* 2) Top-to-bottom phosphor wash (originates from above the viewport) */}
+      {/* Phosphor glow (subtle) */}
       <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.28 }}
+        animate={{ opacity: 0.22 }}
         transition={{ duration: 1.1, ease: "easeOut" }}
-        className="
-          pointer-events-none absolute -top-[36rem] left-1/2
-          h-[50rem] w-[70rem] -translate-x-1/2
-          rounded-full bg-brand-phosphor blur-[140px]
-        "
+        className="pointer-events-none absolute -top-[32rem] left-1/2 h-[46rem] w-[68rem] -translate-x-1/2 rounded-full bg-brand-phosphor blur-[140px]"
       />
 
-      {/* 3) Floating bubbles (more & faster) */}
+      {/* Ambient bubbles */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         {bubbles.map((b) => (
           <motion.span
@@ -73,79 +73,110 @@ export default function Hero() {
               top: `${b.top}vh`,
               width: b.size,
               height: b.size,
-              borderRadius: "9999px",
+              borderRadius: 9999,
               background:
-                "radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.15) 60%, transparent 70%)",
-              boxShadow: "0 0 12px rgba(255,255,255,.08)",
-              filter: "saturate(0.85)",
+                "radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(255,255,255,.12) 60%, transparent 70%)",
+              boxShadow: "0 0 12px rgba(255,255,255,.06)",
+              filter: "saturate(0.8)",
             }}
           />
         ))}
       </div>
 
-      {/* 4) Bottom darkening like the reference */}
-      <div className="absolute inset-x-0 bottom-0 h-56 hero-bottom-fade" aria-hidden />
-
-      {/* 5) Content */}
-      <div className="relative mx-auto w-full max-w-6xl px-4">
-        <div className="text-center">
-          {/* 5a) Headline: split across two lines, balanced */}
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+      {/* Content wrapper */}
+      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl items-center px-4">
+        <div className="grid w-full items-center gap-8 md:grid-cols-2">
+          {/* Left copy */}
+          <div
             className="
-              h-balance leading-[1.05] font-extrabold tracking-tight
-              text-4xl sm:text-6xl md:text-7xl
+              /* center text on mobile, left align on md+ */
+              text-center md:text-left
+              /* add small bottom gap on mobile when form stacks below */
+              md:pr-6
             "
           >
-            <span>Techstars Startup Weekend</span>{" "}
-            <span className="block text-white/85">Colombo</span>
-          </motion.h1>
-
-          {/* 5b) Sub copy */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.06, ease: "easeOut" }}
-            className="mt-5 text-base sm:text-lg md:text-xl text-white/80"
-          >
-            54 hours to pitch, build, and launch —{" "}
-            <strong className="text-white">Nov 14–16, 2025</strong> • Colombo
-          </motion.p>
-
-          {/* 5c) CTA row (pill buttons, outline style like Cobalt; on-brand accent on hover) */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
-            className="mt-9 flex items-center justify-center gap-3"
-          >
-            {/* Primary: outline pill; hover ring uses phosphor */}
-            <a
-              href="#waitlist"
+            <motion.h1
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="
-                inline-flex items-center gap-2 rounded-full px-6 py-3
-                border border-white/25 bg-white/5 text-white
-                hover:bg-white/[0.08] hover:border-brand-phosphor
-                hover:shadow-[0_0_30px_rgba(57,196,99,.35)]
-                transition
+                font-extrabold leading-[1.05] tracking-tight
+                text-4xl sm:text-6xl md:text-6xl
               "
             >
-              Join the waitlist
-            </a>
+              <span className="block">Techstar</span>
+              <span className="block">Startup Weekend</span>
+              <span className="block text-white/85">Sri Lanka</span>
+              <span className="mt-3 block text-[0.62em] font-semibold uppercase tracking-[.18em] text-white/70">
+                Professional Edition
+              </span>
+            </motion.h1>
 
-            {/* Secondary: subtle text link */}
-            <a
-              href="#about"
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.06, ease: "easeOut" }}
+              className="mt-4 text-sm sm:text-base md:text-lg text-white/80"
+            >
+              54 hours to pitch, build, and launch a startup.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
+              className="mt-1 text-white/75"
+            >
+              <strong className="text-white">Nov 14–16, 2025</strong> • Colombo
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.18, ease: "easeOut" }}
               className="
-                inline-flex items-center gap-2 rounded-full px-5 py-3
-                text-white/85 hover:text-white
+                mt-6 flex flex-wrap items-center gap-3
+                /* center CTAs on mobile, left align on md+ */
+                justify-center md:justify-start
               "
             >
-              Learn more
-            </a>
-          </motion.div>
+              <a
+                href="#hero-form"
+                className="
+                  inline-flex items-center justify-center rounded-full
+                  border border-brand-phosphor bg-brand-phosphor
+                  px-5 py-2.5 font-medium text-white
+                  transition hover:bg-transparent hover:text-brand-phosphor
+                "
+              >
+                Join the Waitlist
+              </a>
+              <a
+                href="#about"
+                className="
+                  inline-flex items-center gap-2 rounded-full
+                  px-5 py-3 text-white/85 hover:text-white
+                "
+              >
+                Learn more
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right: Compact card form */}
+          <div className="md:mt-7 mt-4">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur supports-[backdrop-filter]:bg-white/5">
+              <h2 id="hero-form-title" className="text-2xl font-semibold text-white text-center md:text-left">
+                Join the Waitlist
+              </h2>
+              <p className="mt-1 text-xs text-white/70 text-center md:text-left">
+                Be the first to know when registration opens.
+              </p>
+              <div className="mt-4">
+                <ProfessionalWaitlistForm />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

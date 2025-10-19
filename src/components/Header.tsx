@@ -15,18 +15,7 @@ export default function Header() {
           <a href="#sponsors" className="hover:text-white">Sponsors</a>
           
           <a href="#faq" className="hover:text-white">FAQ</a>
-          <a
-              href="#waitlist"
-              className="
-                inline-flex items-center gap-2 rounded-full px-6 py-3
-                border border-white/25 bg-white/5 text-white
-                hover:bg-white/[0.08] hover:border-brand-phosphor
-                hover:shadow-[0_0_30px_rgba(57,196,99,.35)]
-                transition
-              "
-            >
-              Join the waitlist
-            </a>
+          
         </nav>
       </div>
     </header>
