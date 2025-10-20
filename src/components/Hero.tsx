@@ -165,7 +165,7 @@ export default function Hero() {
 
           {/* Right: Compact card form */}
           <div className="md:mt-7 mt-4">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur supports-[backdrop-filter]:bg-white/5">
+            <div className="rounded-2xl border border-white bg-white/2 p-5 backdrop-blur supports-[backdrop-filter]:bg-white/6">
               <h2 id="hero-form-title" className="text-2xl font-semibold text-white text-center md:text-left">
                 Join the Waitlist
               </h2>

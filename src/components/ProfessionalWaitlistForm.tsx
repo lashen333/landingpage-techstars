@@ -1,3 +1,4 @@
+// src\components\ProfessionalWaitlistForm.tsx
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -108,7 +109,7 @@ export default function ProfessionalWaitlistForm() {
     >
       {/* Name (required) */}
       <div>
-        <label htmlFor="name" className="block text-s font-medium text-white/90">
+        <label htmlFor="name" className="block text-xs font-medium text-white/90">
           Name<span className="text-brand-phosphor">*</span>
         </label>
         <input
@@ -123,7 +124,7 @@ export default function ProfessionalWaitlistForm() {
 
       {/* Email (required) */}
       <div>
-        <label htmlFor="email" className="block text-s font-medium text-white/90">
+        <label htmlFor="email" className="block text-xs font-medium text-white/90">
           Email<span className="text-brand-phosphor">*</span>
         </label>
         <input
@@ -139,7 +140,7 @@ export default function ProfessionalWaitlistForm() {
 
       {/* Designation (optional) */}
       <div>
-        <label htmlFor="designation" className="block text-s font-medium text-white/90">Designation</label>
+        <label htmlFor="designation" className="block text-xs font-medium text-white/90">Designation</label>
         <select
           id="designation"
           {...register("designation")}
@@ -157,7 +158,7 @@ export default function ProfessionalWaitlistForm() {
 
       {/* Company / Business Name (optional) */}
       <div>
-        <label htmlFor="company" className="block text-s font-medium text-white/90">Company/Business Name</label>
+        <label htmlFor="company" className="block text-xs font-medium text-white/90">Company/Business Name</label>
         <input
           id="company"
           {...register("company")}
@@ -169,12 +170,12 @@ export default function ProfessionalWaitlistForm() {
 
       {/* Contact No (optional) */}
       <div>
-        <label htmlFor="contact" className="block text-s font-medium text-white/90">Contact No</label>
+        <label htmlFor="contact" className="block text-xs font-medium text-white/90">Contact No</label>
         <input
           id="contact"
           {...register("contact")}
           className="mt-1 w-full rounded-lg border border-white/15 bg-[#0b0b0b] px-3 py-2 text-white placeholder-white/40 focus:border-white/40 outline-none"
-          placeholder="e.g. +94 71 123 4567"
+          placeholder="e.g. +1-212-456-7890"
           inputMode="tel"
           autoComplete="tel"
         />
