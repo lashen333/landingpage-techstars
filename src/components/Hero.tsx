@@ -104,7 +104,7 @@ export default function Hero() {
                 text-4xl sm:text-6xl md:text-6xl
               "
             >
-              <span className="block">Techstar</span>
+              <span className="block">Techstars</span>
               <span className="block">Startup Weekend</span>
               <span className="block text-white/85">Sri Lanka</span>
               <span className="mt-3 block text-[0.62em] font-semibold uppercase tracking-[.18em] text-white/70">
