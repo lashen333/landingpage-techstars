@@ -152,7 +152,7 @@ export default function Hero() {
                 Join the Waitlist
               </a>
               <a
-                href="#about"
+                href="#impact-stats"
                 className="
                   inline-flex items-center gap-2 rounded-full
                   px-5 py-3 text-white/85 hover:text-white

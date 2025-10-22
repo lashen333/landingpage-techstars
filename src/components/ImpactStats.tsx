@@ -51,7 +51,7 @@ export default function ImpactStats() {
   const inView = useInView(sectionRef, { once: true, margin: "0px 0px -20% 0px" });
 
   return (
-    <section ref={sectionRef} className="relative isolate bg-brand-black py-20">
+    <section id="impact-stats" ref={sectionRef} className="relative isolate bg-brand-black py-20">
       {/* section backdrop grid, not inside cards */}
       <div className="absolute inset-0 bg-grid" aria-hidden />
 
