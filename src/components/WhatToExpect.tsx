@@ -31,7 +31,7 @@ const steps = [
     },
     {
         id: "6",
-        title: "Network with mentors, investors, and other professionals",
+        title: "Network with mentors and other professionals",
         desc: "Build meaningful relationships that can accelerate your startup journey.",
     },
 ];
@@ -79,51 +79,51 @@ export default function WhatToExpect() {
                                 className={`relative flex flex-col sm:flex-row sm:items-center ${i % 2 === 0 ? "sm:flex-row-reverse" : ""
                                     }`}
                             >
-                               {/* Connector dot (responsive sizes + phosphor glow) */}
-<div className="relative flex justify-center sm:w-1/2">
-  <div className="absolute sm:static top-0 sm:translate-y-0 flex flex-col items-center">
-    <div className="relative">
-      {/* Glow halos (scale with breakpoint so it doesn’t overpower on mobile) */}
-      <span
-        aria-hidden
-        className="
+                                {/* Connector dot (responsive sizes + phosphor glow) */}
+                                <div className="relative flex justify-center sm:w-1/2">
+                                    <div className="absolute sm:static top-0 sm:translate-y-0 flex flex-col items-center">
+                                        <div className="relative">
+                                            {/* Glow halos (scale with breakpoint so it doesn’t overpower on mobile) */}
+                                            <span
+                                                aria-hidden
+                                                className="
           absolute rounded-full bg-brand-phosphor/25 blur-md
           -inset-1 md:-inset-2
         "
-      />
-      <span
-        aria-hidden
-        className="
+                                            />
+                                            <span
+                                                aria-hidden
+                                                className="
           absolute rounded-full bg-brand-phosphor/15 blur-xl animate-pulse
           -inset-2 md:-inset-4
         "
-      />
+                                            />
 
-      {/* Dot: h-8 w-8 on mobile, h-20 w-20 on desktop */}
-      <div
-        className="
+                                            {/* Dot: h-8 w-8 on mobile, h-20 w-20 on desktop */}
+                                            <div
+                                                className="
           relative flex items-center justify-center rounded-full
           bg-brand-black border border-white/20
           h-8 w-8 md:h-20 md:w-20
           shadow-[0_0_0_2px_rgba(57,196,99,0.20),0_0_18px_rgba(57,196,99,0.35)]
         "
-      >
-        {/* Number size scales with the dot */}
-        <span
-          className="
+                                            >
+                                                {/* Number size scales with the dot */}
+                                                <span
+                                                    className="
             text-white font-semibold leading-none
             text-[10px] sm:text-xs md:text-3xl
           "
-        >
-          {s.id}
-        </span>
-      </div>
-    </div>
+                                                >
+                                                    {s.id}
+                                                </span>
+                                            </div>
+                                        </div>
 
-    {/* Connector line below the dot (kept subtle) */}
-    <div className="hidden sm:block h-8 w-[2px] bg-white/15" />
-  </div>
-</div>
+                                        {/* Connector line below the dot (kept subtle) */}
+                                        <div className="hidden sm:block h-8 w-[2px] bg-white/15" />
+                                    </div>
+                                </div>
 
 
 

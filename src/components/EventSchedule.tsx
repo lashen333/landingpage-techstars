@@ -1,3 +1,4 @@
+// src\components\EventSchedule.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -50,7 +51,7 @@ const days: Day[] = [
     timeRange: "9:00 AM – 7:00 PM",
     icon: TrophyIcon,
     desc:
-      "Polish your demo and narrative. Present final pitches to judges and investors, celebrate wins, and plan next steps for your venture.",
+      "Polish your demo and narrative. Present final pitches to judges celebrate wins, and plan next steps for your venture.",
   },
 ];
 
