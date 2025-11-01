@@ -18,8 +18,8 @@ const tickets: Ticket[] = [
     name: "Early Bird Ticket",
     price: "LKR 18,500",
     desc: "Discounted for early supporters. Ends soon!",
-    tag: "Ends 7th November 2025",
-    expires: "7 Nov 2025",
+    tag: "Ends 28th November 2025",
+    expires: "28 Nov 2025",
     highlight: true,
   },
   {
@@ -44,7 +44,7 @@ export default function TicketsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold"
+            className="text-4xl sm:text-5xl font-bold"
           >
             Tickets & Registration
           </motion.h2>

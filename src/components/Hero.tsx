@@ -127,7 +127,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
               className="mt-1 text-white/75"
             >
-              <strong className="text-white">Nov 14–16, 2025</strong> • Colombo
+              <strong className="text-white">Dec 05-07, 2025</strong> • Colombo
             </motion.p>
 
             <motion.div

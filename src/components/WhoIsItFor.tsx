@@ -1,3 +1,4 @@
+// src\components\WhoIsItFor.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -25,7 +26,7 @@ export default function WhoIsItFor() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
-            className="text-3xl font-bold sm:text-4xl"
+            className="text-4xl font-bold sm:text-5xl"
           >
             Who is it for?
           </motion.h2>

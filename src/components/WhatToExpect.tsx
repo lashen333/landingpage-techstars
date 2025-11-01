@@ -48,7 +48,7 @@ export default function WhatToExpect() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.4 }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl sm:text-4xl font-bold"
+                        className="text-4xl sm:text-5xl font-bold"
                     >
                         What to Expect Over 54 Hours?
                     </motion.h2>

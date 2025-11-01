@@ -51,7 +51,7 @@ export default function ImpactStats() {
   const inView = useInView(sectionRef, { once: true, margin: "0px 0px -20% 0px" });
 
   return (
-    <section id="impact-stats" ref={sectionRef} className="relative isolate bg-brand-black py-20">
+    <section id="impact-stats" ref={sectionRef} className="relative isolate bg-brand-black py-25">
       {/* section backdrop grid, not inside cards */}
       <div className="absolute inset-0 bg-grid" aria-hidden />
 
@@ -63,7 +63,7 @@ export default function ImpactStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold"
           >
             Join Sri Lanka’s first-ever Techstars Startup Weekend for Professionals
           </motion.h2>

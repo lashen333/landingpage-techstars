@@ -1,12 +1,21 @@
 // src\components\Header.tsx
+
+import Image from "next/image";
+
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur">
-      <div className="mx-auto max-w-6xl py-3 flex items-center justify-between">
+      <div className="mx-auto max-w-6xl py-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-xl font-extrabold tracking-tight">techstars<span className="text-brand-phosphor">_</span></span>
-          
-        </div>
+      <Image
+        src="/logo.png"           // 👈 path inside /public
+        alt="Techstars logo"
+        width={120}               // adjust to your design
+        height={42}
+        priority                  // optional: load immediately
+        className="h-auto w-auto"    // for responsive sizing
+      />
+    </div>
         <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
           <a href="#about" className="hover:text-white">About</a>
           <a href="#schedule" className="hover:text-white">Schedule</a>
